@@ -1,0 +1,1234 @@
+{
+  "fixed": {
+    "overall_chars": {
+      "count": 2901,
+      "avg": 465.9055498104102,
+      "median": 500,
+      "min": 1,
+      "max": 500,
+      "variance": 10320.080731257949,
+      "stdev": 101.58779814159745
+    },
+    "overall_words": {
+      "count": 2901,
+      "avg": 71.94139951740779,
+      "median": 75,
+      "min": 1,
+      "max": 137,
+      "variance": 317.5917372130894,
+      "stdev": 17.821103703561388
+    },
+    "papers": {
+      "BLIP-2_Bootstrapping_Language-Image_Pre-training_w": {
+        "total_pages": 13,
+        "chunks_count": 115,
+        "stats_chars": {
+          "count": 115,
+          "avg": 470.3565217391304,
+          "median": 500,
+          "min": 19,
+          "max": 500,
+          "variance": 8820.19633867277,
+          "stdev": 93.91590035064759
+        },
+        "stats_words": {
+          "count": 115,
+          "avg": 72.73913043478261,
+          "median": 76,
+          "min": 2,
+          "max": 101,
+          "variance": 287.4927536231884,
+          "stdev": 16.95561127247226
+        }
+      },
+      "Flamingo: a Visual Language Model for Few-Shot Learning": {
+        "total_pages": 54,
+        "chunks_count": 443,
+        "stats_chars": {
+          "count": 443,
+          "avg": 464.67945823927766,
+          "median": 500,
+          "min": 1,
+          "max": 500,
+          "variance": 10536.616477533886,
+          "stdev": 102.64802227775208
+        },
+        "stats_words": {
+          "count": 443,
+          "avg": 72.75169300225734,
+          "median": 77,
+          "min": 1,
+          "max": 116,
+          "variance": 315.6350367200188,
+          "stdev": 17.766120474656777
+        }
+      },
+      "Grounded Language-Image Pre-training": {
+        "total_pages": 20,
+        "chunks_count": 228,
+        "stats_chars": {
+          "count": 228,
+          "avg": 471.5438596491228,
+          "median": 500.0,
+          "min": 1,
+          "max": 500,
+          "variance": 9510.046526006647,
+          "stdev": 97.51946742064708
+        },
+        "stats_words": {
+          "count": 228,
+          "avg": 72.05701754385964,
+          "median": 75.0,
+          "min": 1,
+          "max": 105,
+          "variance": 303.7192016384574,
+          "stdev": 17.427541468562264
+        }
+      },
+      "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection": {
+        "total_pages": 33,
+        "chunks_count": 185,
+        "stats_chars": {
+          "count": 185,
+          "avg": 453.02162162162165,
+          "median": 500,
+          "min": 3,
+          "max": 500,
+          "variance": 13419.869095182139,
+          "stdev": 115.84415865800976
+        },
+        "stats_words": {
+          "count": 185,
+          "avg": 69.45945945945945,
+          "median": 75,
+          "min": 1,
+          "max": 92,
+          "variance": 349.7279670975323,
+          "stdev": 18.701015135482145
+        }
+      },
+      "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations": {
+        "total_pages": 9,
+        "chunks_count": 117,
+        "stats_chars": {
+          "count": 117,
+          "avg": 474.7350427350427,
+          "median": 500,
+          "min": 48,
+          "max": 500,
+          "variance": 8355.575744179192,
+          "stdev": 91.40883843578362
+        },
+        "stats_words": {
+          "count": 117,
+          "avg": 66.11111111111111,
+          "median": 68,
+          "min": 6,
+          "max": 92,
+          "variance": 217.32375478927204,
+          "stdev": 14.741904720532961
+        }
+      },
+      "KOSMOS-2: Grounding Multimodal Large Language Models to the World": {
+        "total_pages": 20,
+        "chunks_count": 111,
+        "stats_chars": {
+          "count": 111,
+          "avg": 454.4144144144144,
+          "median": 500,
+          "min": 32,
+          "max": 500,
+          "variance": 12030.953972153971,
+          "stdev": 109.68570541394158
+        },
+        "stats_words": {
+          "count": 111,
+          "avg": 68.3963963963964,
+          "median": 72,
+          "min": 6,
+          "max": 95,
+          "variance": 336.6050778050778,
+          "stdev": 18.34680020616886
+        }
+      },
+      "Learning Transferable Visual Models From Natural Language Supervision": {
+        "total_pages": 48,
+        "chunks_count": 522,
+        "stats_chars": {
+          "count": 522,
+          "avg": 472.12835249042143,
+          "median": 500.0,
+          "min": 4,
+          "max": 500,
+          "variance": 8804.446065994514,
+          "stdev": 93.83200981538504
+        },
+        "stats_words": {
+          "count": 522,
+          "avg": 75.11685823754789,
+          "median": 77.0,
+          "min": 1,
+          "max": 107,
+          "variance": 299.1245137188284,
+          "stdev": 17.295216498177417
+        }
+      },
+      "PaLM-E: An Embodied Multimodal Language Model": {
+        "total_pages": 18,
+        "chunks_count": 173,
+        "stats_chars": {
+          "count": 173,
+          "avg": 469.15028901734104,
+          "median": 500,
+          "min": 17,
+          "max": 500,
+          "variance": 9800.314491195053,
+          "stdev": 98.99653777377799
+        },
+        "stats_words": {
+          "count": 173,
+          "avg": 74.90173410404624,
+          "median": 77,
+          "min": 2,
+          "max": 113,
+          "variance": 329.7519155800511,
+          "stdev": 18.159072541846708
+        }
+      },
+      "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro": {
+        "total_pages": 26,
+        "chunks_count": 195,
+        "stats_chars": {
+          "count": 195,
+          "avg": 463.0051282051282,
+          "median": 500,
+          "min": 16,
+          "max": 500,
+          "variance": 11441.953581813375,
+          "stdev": 106.96706774429865
+        },
+        "stats_words": {
+          "count": 195,
+          "avg": 72.84102564102564,
+          "median": 77,
+          "min": 3,
+          "max": 105,
+          "variance": 328.505524715834,
+          "stdev": 18.124721369329627
+        }
+      },
+      "Thinking with Visual Grounding": {
+        "total_pages": 13,
+        "chunks_count": 120,
+        "stats_chars": {
+          "count": 120,
+          "avg": 472.2416666666667,
+          "median": 500.0,
+          "min": 45,
+          "max": 500,
+          "variance": 7883.999929971988,
+          "stdev": 88.79189112735457
+        },
+        "stats_words": {
+          "count": 120,
+          "avg": 73.16666666666667,
+          "median": 75.0,
+          "min": 7,
+          "max": 99,
+          "variance": 234.02240896358543,
+          "stdev": 15.297790983131696
+        }
+      },
+      "VIMA: General Robot Manipulation with Multimodal Prompts": {
+        "total_pages": 48,
+        "chunks_count": 352,
+        "stats_chars": {
+          "count": 352,
+          "avg": 461.9176136363636,
+          "median": 500.0,
+          "min": 33,
+          "max": 500,
+          "variance": 11110.765272921522,
+          "stdev": 105.40761487160935
+        },
+        "stats_words": {
+          "count": 352,
+          "avg": 71.0284090909091,
+          "median": 75.0,
+          "min": 4,
+          "max": 137,
+          "variance": 333.9763986013986,
+          "stdev": 18.275021165552683
+        }
+      },
+      "Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023\u20132025)": {
+        "total_pages": 18,
+        "chunks_count": 132,
+        "stats_chars": {
+          "count": 132,
+          "avg": 459.59090909090907,
+          "median": 500.0,
+          "min": 10,
+          "max": 500,
+          "variance": 12584.777931991672,
+          "stdev": 112.18189663217356
+        },
+        "stats_words": {
+          "count": 132,
+          "avg": 63.40151515151515,
+          "median": 67.0,
+          "min": 3,
+          "max": 91,
+          "variance": 263.53984501503584,
+          "stdev": 16.233910342706587
+        }
+      },
+      "Visual Instruction Tuning": {
+        "total_pages": 25,
+        "chunks_count": 208,
+        "stats_chars": {
+          "count": 208,
+          "avg": 464.0048076923077,
+          "median": 500.0,
+          "min": 39,
+          "max": 500,
+          "variance": 10922.140073392791,
+          "stdev": 104.50904302208872
+        },
+        "stats_words": {
+          "count": 208,
+          "avg": 72.00961538461539,
+          "median": 76.0,
+          "min": 7,
+          "max": 100,
+          "variance": 354.56029357116313,
+          "stdev": 18.82977146890432
+        }
+      }
+    }
+  },
+  "recursive": {
+    "overall_chars": {
+      "count": 3113,
+      "avg": 402.2997108898169,
+      "median": 435,
+      "min": 4,
+      "max": 500,
+      "variance": 10464.560851458806,
+      "stdev": 102.2964361620619
+    },
+    "overall_words": {
+      "count": 3113,
+      "avg": 62.485705107613235,
+      "median": 66,
+      "min": 2,
+      "max": 136,
+      "variance": 316.5191561302342,
+      "stdev": 17.79098524900277
+    },
+    "papers": {
+      "BLIP-2_Bootstrapping_Language-Image_Pre-training_w": {
+        "total_pages": 13,
+        "chunks_count": 122,
+        "stats_chars": {
+          "count": 122,
+          "avg": 411.09016393442624,
+          "median": 443.5,
+          "min": 90,
+          "max": 500,
+          "variance": 9901.057918981169,
+          "stdev": 99.50405981155326
+        },
+        "stats_words": {
+          "count": 122,
+          "avg": 64.09016393442623,
+          "median": 67.0,
+          "min": 12,
+          "max": 100,
+          "variance": 333.76866278282074,
+          "stdev": 18.269336681522425
+        }
+      },
+      "Flamingo: a Visual Language Model for Few-Shot Learning": {
+        "total_pages": 54,
+        "chunks_count": 466,
+        "stats_chars": {
+          "count": 466,
+          "avg": 406.9699570815451,
+          "median": 433.0,
+          "min": 4,
+          "max": 500,
+          "variance": 8193.32812774009,
+          "stdev": 90.51700463305274
+        },
+        "stats_words": {
+          "count": 466,
+          "avg": 63.97854077253219,
+          "median": 66.0,
+          "min": 2,
+          "max": 108,
+          "variance": 245.4145922746781,
+          "stdev": 15.665713908873675
+        }
+      },
+      "Grounded Language-Image Pre-training": {
+        "total_pages": 20,
+        "chunks_count": 244,
+        "stats_chars": {
+          "count": 244,
+          "avg": 409.1311475409836,
+          "median": 455.5,
+          "min": 34,
+          "max": 500,
+          "variance": 11881.530054644809,
+          "stdev": 109.00243141620653
+        },
+        "stats_words": {
+          "count": 244,
+          "avg": 62.68032786885246,
+          "median": 67.0,
+          "min": 7,
+          "max": 102,
+          "variance": 329.1237266410308,
+          "stdev": 18.141767461882836
+        }
+      },
+      "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection": {
+        "total_pages": 33,
+        "chunks_count": 197,
+        "stats_chars": {
+          "count": 197,
+          "avg": 396.3604060913706,
+          "median": 435,
+          "min": 14,
+          "max": 500,
+          "variance": 13897.680669222003,
+          "stdev": 117.88842466171988
+        },
+        "stats_words": {
+          "count": 197,
+          "avg": 61.15228426395939,
+          "median": 66,
+          "min": 5,
+          "max": 91,
+          "variance": 346.0583238371491,
+          "stdev": 18.602642926131466
+        }
+      },
+      "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations": {
+        "total_pages": 9,
+        "chunks_count": 129,
+        "stats_chars": {
+          "count": 129,
+          "avg": 395.5813953488372,
+          "median": 415,
+          "min": 70,
+          "max": 500,
+          "variance": 9257.71402616279,
+          "stdev": 96.21701526322042
+        },
+        "stats_words": {
+          "count": 129,
+          "avg": 55.74418604651163,
+          "median": 57,
+          "min": 11,
+          "max": 95,
+          "variance": 232.3012354651163,
+          "stdev": 15.2414315425132
+        }
+      },
+      "KOSMOS-2: Grounding Multimodal Large Language Models to the World": {
+        "total_pages": 20,
+        "chunks_count": 122,
+        "stats_chars": {
+          "count": 122,
+          "avg": 381.4672131147541,
+          "median": 408.0,
+          "min": 75,
+          "max": 500,
+          "variance": 11305.457593821975,
+          "stdev": 106.3271253905699
+        },
+        "stats_words": {
+          "count": 122,
+          "avg": 57.65573770491803,
+          "median": 60.0,
+          "min": 4,
+          "max": 93,
+          "variance": 332.1614957322856,
+          "stdev": 18.225298234385235
+        }
+      },
+      "Learning Transferable Visual Models From Natural Language Supervision": {
+        "total_pages": 48,
+        "chunks_count": 558,
+        "stats_chars": {
+          "count": 558,
+          "avg": 408.93548387096774,
+          "median": 436.0,
+          "min": 40,
+          "max": 500,
+          "variance": 8930.200498059883,
+          "stdev": 94.49973808460996
+        },
+        "stats_words": {
+          "count": 558,
+          "avg": 65.54659498207886,
+          "median": 68.0,
+          "min": 5,
+          "max": 106,
+          "variance": 297.6450422450017,
+          "stdev": 17.252392362944963
+        }
+      },
+      "PaLM-E: An Embodied Multimodal Language Model": {
+        "total_pages": 18,
+        "chunks_count": 190,
+        "stats_chars": {
+          "count": 190,
+          "avg": 397.0263157894737,
+          "median": 429.0,
+          "min": 47,
+          "max": 500,
+          "variance": 10719.30618212197,
+          "stdev": 103.53408222475328
+        },
+        "stats_words": {
+          "count": 190,
+          "avg": 63.76315789473684,
+          "median": 66.0,
+          "min": 7,
+          "max": 113,
+          "variance": 358.1605402394876,
+          "stdev": 18.925129860571303
+        }
+      },
+      "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro": {
+        "total_pages": 26,
+        "chunks_count": 217,
+        "stats_chars": {
+          "count": 217,
+          "avg": 389.04608294930875,
+          "median": 441,
+          "min": 4,
+          "max": 500,
+          "variance": 15351.257125789383,
+          "stdev": 123.90019017656665
+        },
+        "stats_words": {
+          "count": 217,
+          "avg": 61.815668202764975,
+          "median": 67,
+          "min": 2,
+          "max": 104,
+          "variance": 436.84549411162317,
+          "stdev": 20.900849124177302
+        }
+      },
+      "Thinking with Visual Grounding": {
+        "total_pages": 13,
+        "chunks_count": 131,
+        "stats_chars": {
+          "count": 131,
+          "avg": 398.3206106870229,
+          "median": 422,
+          "min": 97,
+          "max": 500,
+          "variance": 8115.573341162654,
+          "stdev": 90.08647701604639
+        },
+        "stats_words": {
+          "count": 131,
+          "avg": 62.06106870229008,
+          "median": 63,
+          "min": 12,
+          "max": 97,
+          "variance": 244.91931884908985,
+          "stdev": 15.649898365455599
+        }
+      },
+      "VIMA: General Robot Manipulation with Multimodal Prompts": {
+        "total_pages": 48,
+        "chunks_count": 370,
+        "stats_chars": {
+          "count": 370,
+          "avg": 410.64324324324326,
+          "median": 445.0,
+          "min": 47,
+          "max": 500,
+          "variance": 9519.05937156669,
+          "stdev": 97.56566697136185
+        },
+        "stats_words": {
+          "count": 370,
+          "avg": 63.36756756756757,
+          "median": 65.0,
+          "min": 6,
+          "max": 136,
+          "variance": 315.4255035523328,
+          "stdev": 17.760222508525416
+        }
+      },
+      "Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023\u20132025)": {
+        "total_pages": 18,
+        "chunks_count": 145,
+        "stats_chars": {
+          "count": 145,
+          "avg": 386.2344827586207,
+          "median": 436,
+          "min": 36,
+          "max": 500,
+          "variance": 14143.40296934866,
+          "stdev": 118.92603991283262
+        },
+        "stats_words": {
+          "count": 145,
+          "avg": 53.66896551724138,
+          "median": 58,
+          "min": 7,
+          "max": 90,
+          "variance": 292.611877394636,
+          "stdev": 17.105901829328847
+        }
+      },
+      "Visual Instruction Tuning": {
+        "total_pages": 25,
+        "chunks_count": 222,
+        "stats_chars": {
+          "count": 222,
+          "avg": 400.5045045045045,
+          "median": 429.0,
+          "min": 59,
+          "max": 500,
+          "variance": 10148.839346133464,
+          "stdev": 100.74144800494712
+        },
+        "stats_words": {
+          "count": 222,
+          "avg": 62.41891891891892,
+          "median": 65.5,
+          "min": 9,
+          "max": 93,
+          "variance": 302.83276262688025,
+          "stdev": 17.402090754472013
+        }
+      }
+    }
+  },
+  "markdown": {
+    "overall_chars": {
+      "count": 345,
+      "avg": 3547.292753623188,
+      "median": 3618,
+      "min": 368,
+      "max": 10019,
+      "variance": 2253974.9402089654,
+      "stdev": 1501.3243953952674
+    },
+    "overall_words": {
+      "count": 345,
+      "avg": 543.0869565217391,
+      "median": 530,
+      "min": 51,
+      "max": 1944,
+      "variance": 56579.94009100101,
+      "stdev": 237.8653822879677
+    },
+    "papers": {
+      "BLIP-2_Bootstrapping_Language-Image_Pre-training_w": {
+        "total_pages": 13,
+        "chunks_count": 13,
+        "stats_chars": {
+          "count": 13,
+          "avg": 3772.6923076923076,
+          "median": 4495,
+          "min": 527,
+          "max": 5640,
+          "variance": 3152940.8974358975,
+          "stdev": 1775.6522456370496
+        },
+        "stats_words": {
+          "count": 13,
+          "avg": 579.6153846153846,
+          "median": 715,
+          "min": 81,
+          "max": 862,
+          "variance": 71257.2564102564,
+          "stdev": 266.94054845649885
+        }
+      },
+      "Flamingo: a Visual Language Model for Few-Shot Learning": {
+        "total_pages": 54,
+        "chunks_count": 54,
+        "stats_chars": {
+          "count": 54,
+          "avg": 3454.962962962963,
+          "median": 3505.5,
+          "min": 1049,
+          "max": 5035,
+          "variance": 1079386.4514325645,
+          "stdev": 1038.935248912349
+        },
+        "stats_words": {
+          "count": 54,
+          "avg": 535.4629629629629,
+          "median": 519.5,
+          "min": 172,
+          "max": 837,
+          "variance": 27420.17784765898,
+          "stdev": 165.59039177337246
+        }
+      },
+      "Grounded Language-Image Pre-training": {
+        "total_pages": 20,
+        "chunks_count": 20,
+        "stats_chars": {
+          "count": 20,
+          "avg": 4867.4,
+          "median": 4973.0,
+          "min": 1995,
+          "max": 7629,
+          "variance": 1619254.252631579,
+          "stdev": 1272.4992151791603
+        },
+        "stats_words": {
+          "count": 20,
+          "avg": 736.05,
+          "median": 813.0,
+          "min": 288,
+          "max": 1029,
+          "variance": 32535.313157894736,
+          "stdev": 180.37547826102843
+        }
+      },
+      "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection": {
+        "total_pages": 33,
+        "chunks_count": 33,
+        "stats_chars": {
+          "count": 33,
+          "avg": 2316.030303030303,
+          "median": 2409,
+          "min": 686,
+          "max": 3558,
+          "variance": 693486.9678030303,
+          "stdev": 832.758649191367
+        },
+        "stats_words": {
+          "count": 33,
+          "avg": 352.42424242424244,
+          "median": 359,
+          "min": 113,
+          "max": 536,
+          "variance": 15427.626893939394,
+          "stdev": 124.20799851031894
+        }
+      },
+      "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations": {
+        "total_pages": 9,
+        "chunks_count": 9,
+        "stats_chars": {
+          "count": 9,
+          "avg": 5575.111111111111,
+          "median": 5548,
+          "min": 4548,
+          "max": 7284,
+          "variance": 758401.8611111111,
+          "stdev": 870.8627108282402
+        },
+        "stats_words": {
+          "count": 9,
+          "avg": 769.6666666666666,
+          "median": 787,
+          "min": 602,
+          "max": 1006,
+          "variance": 18490.75,
+          "stdev": 135.98069715956012
+        }
+      },
+      "KOSMOS-2: Grounding Multimodal Large Language Models to the World": {
+        "total_pages": 20,
+        "chunks_count": 20,
+        "stats_chars": {
+          "count": 20,
+          "avg": 2296.7,
+          "median": 2769.5,
+          "min": 368,
+          "max": 4461,
+          "variance": 1877612.1157894738,
+          "stdev": 1370.2598716263547
+        },
+        "stats_words": {
+          "count": 20,
+          "avg": 341.85,
+          "median": 398.0,
+          "min": 70,
+          "max": 651,
+          "variance": 40164.87105263158,
+          "stdev": 200.41175377864337
+        }
+      },
+      "Learning Transferable Visual Models From Natural Language Supervision": {
+        "total_pages": 48,
+        "chunks_count": 48,
+        "stats_chars": {
+          "count": 48,
+          "avg": 4647.208333333333,
+          "median": 4680.0,
+          "min": 1133,
+          "max": 10019,
+          "variance": 2600449.1471631206,
+          "stdev": 1612.5908182682674
+        },
+        "stats_words": {
+          "count": 48,
+          "avg": 732.7708333333334,
+          "median": 737.0,
+          "min": 154,
+          "max": 1944,
+          "variance": 91862.56338652482,
+          "stdev": 303.08837553843074
+        }
+      },
+      "PaLM-E: An Embodied Multimodal Language Model": {
+        "total_pages": 18,
+        "chunks_count": 18,
+        "stats_chars": {
+          "count": 18,
+          "avg": 4078.1666666666665,
+          "median": 4670.5,
+          "min": 848,
+          "max": 6637,
+          "variance": 3186911.5588235296,
+          "stdev": 1785.1923030372748
+        },
+        "stats_words": {
+          "count": 18,
+          "avg": 641.4444444444445,
+          "median": 710.0,
+          "min": 133,
+          "max": 1111,
+          "variance": 80300.61437908496,
+          "stdev": 283.37363035237587
+        }
+      },
+      "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro": {
+        "total_pages": 26,
+        "chunks_count": 26,
+        "stats_chars": {
+          "count": 26,
+          "avg": 3152.1153846153848,
+          "median": 3392.0,
+          "min": 466,
+          "max": 4417,
+          "variance": 1069046.186153846,
+          "stdev": 1033.9468971634114
+        },
+        "stats_words": {
+          "count": 26,
+          "avg": 492.3076923076923,
+          "median": 529.5,
+          "min": 78,
+          "max": 696,
+          "variance": 26002.221538461537,
+          "stdev": 161.25204351716457
+        }
+      },
+      "Thinking with Visual Grounding": {
+        "total_pages": 13,
+        "chunks_count": 13,
+        "stats_chars": {
+          "count": 13,
+          "avg": 3947.769230769231,
+          "median": 4322,
+          "min": 1122,
+          "max": 5143,
+          "variance": 1203796.6923076923,
+          "stdev": 1097.1766914712016
+        },
+        "stats_words": {
+          "count": 13,
+          "avg": 605.1538461538462,
+          "median": 652,
+          "min": 190,
+          "max": 894,
+          "variance": 29237.141025641027,
+          "stdev": 170.98871607694184
+        }
+      },
+      "VIMA: General Robot Manipulation with Multimodal Prompts": {
+        "total_pages": 48,
+        "chunks_count": 48,
+        "stats_chars": {
+          "count": 48,
+          "avg": 3042.5208333333335,
+          "median": 2787.0,
+          "min": 393,
+          "max": 5486,
+          "variance": 1993445.6591312056,
+          "stdev": 1411.894351264005
+        },
+        "stats_words": {
+          "count": 48,
+          "avg": 467.1875,
+          "median": 442.5,
+          "min": 59,
+          "max": 804,
+          "variance": 40032.19813829787,
+          "stdev": 200.08047915350932
+        }
+      },
+      "Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023\u20132025)": {
+        "total_pages": 18,
+        "chunks_count": 18,
+        "stats_chars": {
+          "count": 18,
+          "avg": 3060.6666666666665,
+          "median": 3154.5,
+          "min": 390,
+          "max": 4591,
+          "variance": 835036.1176470588,
+          "stdev": 913.8031066083431
+        },
+        "stats_words": {
+          "count": 18,
+          "avg": 418,
+          "median": 424.0,
+          "min": 51,
+          "max": 586,
+          "variance": 15437.882352941177,
+          "stdev": 124.2492750600227
+        }
+      },
+      "Visual Instruction Tuning": {
+        "total_pages": 25,
+        "chunks_count": 25,
+        "stats_chars": {
+          "count": 25,
+          "avg": 3497.36,
+          "median": 3787,
+          "min": 1480,
+          "max": 4836,
+          "variance": 834687.49,
+          "stdev": 913.6123302582994
+        },
+        "stats_words": {
+          "count": 25,
+          "avg": 538.6,
+          "median": 529,
+          "min": 208,
+          "max": 827,
+          "variance": 20457.833333333332,
+          "stdev": 143.0308824461813
+        }
+      }
+    }
+  },
+  "semantic": {
+    "overall_chars": {
+      "count": 1119,
+      "avg": 1094.472743521001,
+      "median": 804,
+      "min": 1,
+      "max": 9731,
+      "variance": 1122276.71817413,
+      "stdev": 1059.3756265716754
+    },
+    "overall_words": {
+      "count": 1119,
+      "avg": 167.66756032171583,
+      "median": 122,
+      "min": 1,
+      "max": 1911,
+      "variance": 27199.81782865803,
+      "stdev": 164.92367273577807
+    },
+    "papers": {
+      "BLIP-2_Bootstrapping_Language-Image_Pre-training_w": {
+        "total_pages": 13,
+        "chunks_count": 45,
+        "stats_chars": {
+          "count": 45,
+          "avg": 1089.2444444444445,
+          "median": 830,
+          "min": 9,
+          "max": 4002,
+          "variance": 823656.9161616162,
+          "stdev": 907.555461755157
+        },
+        "stats_words": {
+          "count": 45,
+          "avg": 167.51111111111112,
+          "median": 130,
+          "min": 2,
+          "max": 599,
+          "variance": 19569.39191919192,
+          "stdev": 139.89064271491472
+        }
+      },
+      "Flamingo: a Visual Language Model for Few-Shot Learning": {
+        "total_pages": 54,
+        "chunks_count": 169,
+        "stats_chars": {
+          "count": 169,
+          "avg": 1103.5443786982248,
+          "median": 846,
+          "min": 1,
+          "max": 3621,
+          "variance": 890513.1304592843,
+          "stdev": 943.6700326169547
+        },
+        "stats_words": {
+          "count": 169,
+          "avg": 171.36686390532543,
+          "median": 141,
+          "min": 1,
+          "max": 586,
+          "variance": 21518.82889546351,
+          "stdev": 146.69297493562365
+        }
+      },
+      "Grounded Language-Image Pre-training": {
+        "total_pages": 20,
+        "chunks_count": 69,
+        "stats_chars": {
+          "count": 69,
+          "avg": 1410.3188405797102,
+          "median": 1183,
+          "min": 2,
+          "max": 7560,
+          "variance": 1999537.2497868713,
+          "stdev": 1414.0499460015092
+        },
+        "stats_words": {
+          "count": 69,
+          "avg": 213.53623188405797,
+          "median": 175,
+          "min": 1,
+          "max": 1020,
+          "variance": 41798.78175618073,
+          "stdev": 204.447503668254
+        }
+      },
+      "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection": {
+        "total_pages": 33,
+        "chunks_count": 82,
+        "stats_chars": {
+          "count": 82,
+          "avg": 931.4634146341464,
+          "median": 724.5,
+          "min": 4,
+          "max": 2683,
+          "variance": 688351.6097560975,
+          "stdev": 829.6695786613473
+        },
+        "stats_words": {
+          "count": 82,
+          "avg": 141.82926829268294,
+          "median": 117.5,
+          "min": 2,
+          "max": 435,
+          "variance": 16052.513700692563,
+          "stdev": 126.69851499008409
+        }
+      },
+      "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations": {
+        "total_pages": 9,
+        "chunks_count": 35,
+        "stats_chars": {
+          "count": 35,
+          "avg": 1432.857142857143,
+          "median": 939,
+          "min": 2,
+          "max": 5052,
+          "variance": 1772005.243697479,
+          "stdev": 1331.1668729717844
+        },
+        "stats_words": {
+          "count": 35,
+          "avg": 197.9142857142857,
+          "median": 128,
+          "min": 1,
+          "max": 723,
+          "variance": 33537.786554621845,
+          "stdev": 183.13324808625507
+        }
+      },
+      "KOSMOS-2: Grounding Multimodal Large Language Models to the World": {
+        "total_pages": 20,
+        "chunks_count": 50,
+        "stats_chars": {
+          "count": 50,
+          "avg": 918.08,
+          "median": 633.5,
+          "min": 1,
+          "max": 3604,
+          "variance": 731768.3608163266,
+          "stdev": 855.4346034714323
+        },
+        "stats_words": {
+          "count": 50,
+          "avg": 136.74,
+          "median": 103.5,
+          "min": 1,
+          "max": 546,
+          "variance": 15737.298367346939,
+          "stdev": 125.44838925768214
+        }
+      },
+      "Learning Transferable Visual Models From Natural Language Supervision": {
+        "total_pages": 48,
+        "chunks_count": 174,
+        "stats_chars": {
+          "count": 174,
+          "avg": 1281.2643678160919,
+          "median": 874.5,
+          "min": 9,
+          "max": 9731,
+          "variance": 1643603.686931101,
+          "stdev": 1282.031078769583
+        },
+        "stats_words": {
+          "count": 174,
+          "avg": 202.14367816091954,
+          "median": 143.0,
+          "min": 2,
+          "max": 1911,
+          "variance": 47069.696000265765,
+          "stdev": 216.95551617846863
+        }
+      },
+      "PaLM-E: An Embodied Multimodal Language Model": {
+        "total_pages": 18,
+        "chunks_count": 68,
+        "stats_chars": {
+          "count": 68,
+          "avg": 1080.1029411764705,
+          "median": 706.5,
+          "min": 4,
+          "max": 4697,
+          "variance": 1222276.12357331,
+          "stdev": 1105.5659743196286
+        },
+        "stats_words": {
+          "count": 68,
+          "avg": 171.02941176470588,
+          "median": 111.5,
+          "min": 1,
+          "max": 747,
+          "variance": 29160.417032484635,
+          "stdev": 170.76421473038383
+        }
+      },
+      "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro": {
+        "total_pages": 26,
+        "chunks_count": 107,
+        "stats_chars": {
+          "count": 107,
+          "avg": 765.1682242990654,
+          "median": 407,
+          "min": 1,
+          "max": 4098,
+          "variance": 881341.5186034209,
+          "stdev": 938.7979114822427
+        },
+        "stats_words": {
+          "count": 107,
+          "avg": 119.62616822429906,
+          "median": 63,
+          "min": 1,
+          "max": 626,
+          "variance": 21577.953271028036,
+          "stdev": 146.89436092317513
+        }
+      },
+      "Thinking with Visual Grounding": {
+        "total_pages": 13,
+        "chunks_count": 44,
+        "stats_chars": {
+          "count": 44,
+          "avg": 1166.6818181818182,
+          "median": 789.0,
+          "min": 1,
+          "max": 4182,
+          "variance": 1333269.2452431289,
+          "stdev": 1154.6727870886752
+        },
+        "stats_words": {
+          "count": 44,
+          "avg": 179.5681818181818,
+          "median": 114.0,
+          "min": 1,
+          "max": 679,
+          "variance": 32096.530126849895,
+          "stdev": 179.15504493831563
+        }
+      },
+      "VIMA: General Robot Manipulation with Multimodal Prompts": {
+        "total_pages": 48,
+        "chunks_count": 152,
+        "stats_chars": {
+          "count": 152,
+          "avg": 969.828947368421,
+          "median": 733.0,
+          "min": 2,
+          "max": 4370,
+          "variance": 727673.8778319972,
+          "stdev": 853.0380283621577
+        },
+        "stats_words": {
+          "count": 152,
+          "avg": 148.01973684210526,
+          "median": 110.0,
+          "min": 1,
+          "max": 661,
+          "variance": 17983.012852910422,
+          "stdev": 134.10075634727204
+        }
+      },
+      "Vision Language Models: A Survey of 26K Papers (CVPR, ICLR, NeurIPS 2023\u20132025)": {
+        "total_pages": 18,
+        "chunks_count": 50,
+        "stats_chars": {
+          "count": 50,
+          "avg": 1101.2,
+          "median": 1012.0,
+          "min": 2,
+          "max": 3325,
+          "variance": 847992.612244898,
+          "stdev": 920.8651433542797
+        },
+        "stats_words": {
+          "count": 50,
+          "avg": 150.48,
+          "median": 139.5,
+          "min": 1,
+          "max": 461,
+          "variance": 15705.397551020407,
+          "stdev": 125.32117758391998
+        }
+      },
+      "Visual Instruction Tuning": {
+        "total_pages": 25,
+        "chunks_count": 74,
+        "stats_chars": {
+          "count": 74,
+          "avg": 1180.8918918918919,
+          "median": 987.5,
+          "min": 2,
+          "max": 3975,
+          "variance": 1056635.577193632,
+          "stdev": 1027.9278073841722
+        },
+        "stats_words": {
+          "count": 74,
+          "avg": 181.97297297297297,
+          "median": 152.0,
+          "min": 1,
+          "max": 597,
+          "variance": 24637.533506108848,
+          "stdev": 156.96347825564024
+        }
+      }
+    }
+  }
+}
