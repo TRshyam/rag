@@ -1,0 +1,51 @@
+{
+  "experiment_id": "experiment_0",
+  "experiment_name": "Experiment 0 / Baseline",
+  "frozen": true,
+  "date_frozen": "2026-10-02",
+  "description": "Frozen baseline configuration for Autonomous Multimodal RAG Benchmark over 13 research papers.",
+  "configuration": {
+    "chunking": "Semantic",
+    "chunking_strategy": "semantic",
+    "embedding": "Qwen3-Embedding-0.6B",
+    "embedding_model_id": "Qwen/Qwen3-Embedding-0.6B",
+    "vector_db": "Qdrant",
+    "vector_db_url": "http://localhost:6333",
+    "collection": "Qwen3_Embedding_0_6B_semantic",
+    "top_k": 5,
+    "llm": "Qwen3.5:4B",
+    "llm_model": "qwen3.5:4b",
+    "temperature": 0.0,
+    "num_ctx": 8192,
+    "reasoning": false,
+    "num_predict": 1024,
+    "prompt_template": "Context:\n{context_str}\n\nQuestion:\n{question}\n\nAnswer using only the context."
+  },
+  "dataset": {
+    "golden_file": "evaluation/gemini-code-1790832398351.json",
+    "total_questions": 122,
+    "evaluated_papers_count": 10,
+    "total_corpus_papers": 13,
+    "unevaluated_papers_count": 3
+  },
+  "results": {
+    "total_questions": 122,
+    "top_5_document_hit_count": 120,
+    "top_5_document_hit_rate": "98.4%",
+    "top_1_document_hit_count": 110,
+    "top_1_document_hit_rate": "90.2%",
+    "top_5_page_hit_near_count": 87,
+    "top_5_page_hit_near_rate": "71.3%",
+    "top_5_page_hit_exact_count": 64,
+    "top_5_page_hit_exact_rate": "52.5%",
+    "avg_top_1_similarity_score": 0.7339,
+    "avg_all_chunks_similarity_score": 0.6900,
+    "llm_completed_answers_count": 100,
+    "llm_completed_answers_rate": "82.0%",
+    "llm_cutoff_empty_count": 0,
+    "llm_cutoff_empty_rate": "0.0%",
+    "llm_refusals_count": 22,
+    "llm_refusals_rate": "18.0%"
+  },
+  "data_file": "evaluation/results/results data/experiment_0_baseline.json"
+}

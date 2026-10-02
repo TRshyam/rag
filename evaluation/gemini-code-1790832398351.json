@@ -1,0 +1,1222 @@
+[
+  {
+    "id": "blip2_001",
+    "type": "Architecture",
+    "question": "What core module does BLIP-2 introduce to bridge the modality gap between frozen image encoders and frozen LLMs?",
+    "answer": "The Querying Transformer (Q-Former).",
+    "evidence": "To achieve effective vision-language alignment with frozen unimodal models, we propose a Querying Transformer (Q-Former) pre-trained with a new two-stage pre-training strategy.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 2
+  },
+  {
+    "id": "blip2_002",
+    "type": "Procedure",
+    "question": "What are the two pre-training stages in BLIP-2?",
+    "answer": "Stage 1 bootstraps vision-language representation learning from a frozen image encoder, and Stage 2 bootstraps vision-to-language generative learning from a frozen language model.",
+    "evidence": "The first stage bootstraps vision-language representation learning from a frozen image encoder. The second stage bootstraps vision-to-language generative learning from a frozen language model.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 2
+  },
+  {
+    "id": "blip2_003",
+    "type": "Numbers",
+    "question": "How many total parameters does Q-Former contain, and how is it initialized?",
+    "answer": "188M parameters, initialized with the pre-trained weights of BERT_base (with randomly initialized cross-attention layers).",
+    "evidence": "We initialize Q-Former with the pre-trained weights of BERT_base, whereas the cross-attention layers are randomly initialized. In total, Q-Former contains 188M parameters.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 3
+  },
+  {
+    "id": "blip2_004",
+    "type": "Numbers",
+    "question": "How many learnable query embeddings are used in Q-Former, and what is their feature dimension?",
+    "answer": "32 queries, each having a dimension of 768.",
+    "evidence": "In our experiments, we use 32 queries where each query has a dimension of 768 (same as the hidden dimension of the Q-Former).",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 3
+  },
+  {
+    "id": "blip2_005",
+    "type": "Training",
+    "question": "What three pre-training objectives are jointly optimized in the representation learning stage of BLIP-2?",
+    "answer": "Image-Text Contrastive Learning (ITC), Image-grounded Text Generation (ITG), and Image-Text Matching (ITM).",
+    "evidence": "Inspired by BLIP, we jointly optimize three pre-training objectives that share the same input format and model parameters: Image-Text Contrastive Learning (ITC), Image-grounded Text Generation (ITG), and Image-Text Matching (ITM).",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 3
+  },
+  {
+    "id": "blip2_006",
+    "type": "Architecture",
+    "question": "What self-attention masking strategies are applied in Q-Former for ITC, ITG, and ITM respectively?",
+    "answer": "A unimodal self-attention mask for ITC, a multimodal causal self-attention mask for ITG, and a bi-directional self-attention mask for ITM.",
+    "evidence": "To avoid information leak, we employ a unimodal self-attention mask... We employ a multimodal causal self-attention mask to control query-text interaction... We use a bi-directional self-attention mask where all queries and texts can attend to each other.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 3
+  },
+  {
+    "id": "blip2_007",
+    "type": "Procedure",
+    "question": "Which specific layer of the frozen Vision Transformer is used as output visual features in BLIP-2?",
+    "answer": "The second-to-last layer (the last layer is removed).",
+    "evidence": "We remove the last layer of the ViT and uses the second last layer's output features, which leads to slightly better performance.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 4
+  },
+  {
+    "id": "blip2_008",
+    "type": "Architecture",
+    "question": "How is the output of the Q-Former adapted to the input dimension of the chosen LLM in the generative stage?",
+    "answer": "Via a fully-connected (FC) layer that linearly projects the output query embeddings Z into the text embedding dimension of the LLM.",
+    "evidence": "As shown in Figure 3, we use a fully-connected (FC) layer to linearly project the output query embeddings Z into the same dimension as the text embedding of the LLM.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 4
+  },
+  {
+    "id": "blip2_009",
+    "type": "Comparison",
+    "question": "How does BLIP-2 compare to Flamingo80B on zero-shot VQAv2 in accuracy and trainable parameters?",
+    "answer": "BLIP-2 outperforms Flamingo80B by 8.7% on zero-shot VQAv2 (65.0% vs. 56.3%) while using 54x fewer trainable parameters.",
+    "evidence": "For example, our model outperforms Flamingo80B by 8.7% on zero-shot VQAv2 with 54x fewer trainable parameters.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 1
+  },
+  {
+    "id": "blip2_010",
+    "type": "Reason/Why",
+    "question": "What happens if vision-to-language generative learning is trained without the first-stage representation learning?",
+    "answer": "The model gives substantially lower zero-shot VQA performance, and OPT suffers from catastrophic forgetting where performance degrades as training proceeds.",
+    "evidence": "Without representation learning, both types of LLMs give substantially lower performance on zero-shot VQA. In particular, OPT suffers from catastrophic forgetting where performance drastically degrades as training proceeds.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 7
+  },
+  {
+    "id": "blip2_011",
+    "type": "Reason/Why",
+    "question": "Why does BLIP-2 lack in-context few-shot learning capability unlike Flamingo?",
+    "answer": "Because its pre-training dataset contains only a single image-text pair per sample rather than interleaved sequences with multiple image-text pairs.",
+    "evidence": "We attribute the lack of in-context learning capability to our pre-training dataset, which only contains a single image-text pair per sample. The LLMs cannot learn from it the correlation among multiple image-text pairs in a single sequence.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 8
+  },
+  {
+    "id": "blip2_012",
+    "type": "Architecture",
+    "question": "How is the question provided to Q-Former during visual question answering (VQA) fine-tuning?",
+    "answer": "Question tokens are provided as input to Q-Former and interact with queries via self-attention layers to guide cross-attention to focus on relevant image regions.",
+    "evidence": "Specifically, the question tokens are given as input to the Q-Former and interact with the queries via the self-attention layers, which can guide the Q-Former's cross-attention layers to focus on more informative image regions.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 7
+  },
+  {
+    "id": "blip2_013",
+    "type": "Performance",
+    "question": "What score did fine-tuned BLIP-2 ViT-G achieve on the NoCaps validation set in CIDEr?",
+    "answer": "121.6 overall CIDEr (with FlanT5_XL) and 121.0 (with OPT_6.7B).",
+    "evidence": "In Table 3, NoCaps Zero-shot overall CIDEr is 121.6 with ViT-G FlanT5_XL and 121.0 with ViT-G OPT_6.7B.",
+    "source": "BLIP-2",
+    "source_file": "BLIP-2_Bootstrapping_Language-Image_Pre-training_w.pdf",
+    "page": 7
+  },
+  {
+    "id": "flam_001",
+    "type": "Architecture",
+    "question": "What vision encoder architecture does Flamingo use, and how is it pre-trained?",
+    "answer": "A pretrained and frozen Normalizer-Free ResNet (NFNet-F6), trained contrastively on image-text pairs using a two-term contrastive loss.",
+    "evidence": "Our vision encoder is a pretrained and frozen Normalizer-Free ResNet (NFNet) - we use the F6 model. We pretrain the vision encoder using a contrastive objective on our datasets of image and text pairs, using the two-term contrastive loss from Radford et al.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 5
+  },
+  {
+    "id": "flam_002",
+    "type": "Definition",
+    "question": "What is the function of the Perceiver Resampler in Flamingo?",
+    "answer": "It takes variable-size spatio-temporal features from the vision encoder and maps them to a fixed number of visual tokens (64 tokens).",
+    "evidence": "It takes as input a variable number of image or video features from the vision encoder and produces a fixed number of visual outputs (64), reducing the computational complexity of the vision-text cross-attention.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 5
+  },
+  {
+    "id": "flam_003",
+    "type": "Architecture",
+    "question": "What mechanism ensures that the language model output matches the original pretrained LM at initialization in Flamingo?",
+    "answer": "A tanh-gating mechanism where the newly added cross-attention layer output is multiplied by tanh(alpha), with alpha initialized to 0.",
+    "evidence": "To ensure that at initialization, the conditioned model yields the same results as the original language model, we use a tanh-gating mechanism. This multiplies the output of a newly added layer by tanh(alpha)... where alpha is a layer-specific learnable scalar initialized to 0.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 5
+  },
+  {
+    "id": "flam_004",
+    "type": "Numbers",
+    "question": "How frequently are GATED XATTN-DENSE layers inserted into Flamingo-9B and Flamingo-80B?",
+    "answer": "Every fourth block for Flamingo-9B, and every seventh block for Flamingo-80B.",
+    "evidence": "In light of this trade-off, we maximize the number of added layers under hardware constraints and add a GATED XATTN-DENSE every fourth layer for Flamingo-9B and every seventh for Flamingo-80B.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 8
+  },
+  {
+    "id": "flam_005",
+    "type": "Procedure",
+    "question": "How does Flamingo's per-image cross-attention masking mechanism restrict vision-language cross-attention?",
+    "answer": "At any text token, the model only cross-attends to visual tokens of the image immediately preceding it, propagating dependencies across images via text self-attention.",
+    "evidence": "At a given text token, the model attends to the visual tokens of the image that appeared just before it in the interleaved sequence, rather than to all previous images... Though the model only directly attends to a single image at a time, the dependency on all previous images remains via self-attention in the LM.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 6
+  },
+  {
+    "id": "flam_006",
+    "type": "Training",
+    "question": "What three datasets comprise Flamingo's web-scraped pre-training mixture?",
+    "answer": "M3W (MultiModal Massive Web interleaved dataset), LTIP (Long Text & Image Pairs), and VTP (Video & Text Pairs), along with ALIGN.",
+    "evidence": "We train the Flamingo models on a mixture of three kinds of datasets, all scraped from the web: an interleaved image and text dataset derived from webpages (M3W), image-text pairs (ALIGN and LTIP), and video-text pairs (VTP).",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 6
+  },
+  {
+    "id": "flam_007",
+    "type": "Comparison",
+    "question": "How does gradient accumulation compare to round-robin training across datasets in Flamingo?",
+    "answer": "Accumulating and weighting gradients over all datasets outperforms the round-robin approach by 7.8% on the overall score (70.7 vs. 62.9).",
+    "evidence": "We accumulate gradients over all datasets, which we found outperforms a 'round-robin' approach... Table 3 shows Overall score drops from 70.7 to 62.9 when using Round Robin.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 6
+  },
+  {
+    "id": "flam_008",
+    "type": "Reason/Why",
+    "question": "Why is the pretrained language model kept frozen during Flamingo pre-training?",
+    "answer": "To prevent catastrophic forgetting, which degrades overall score by 8.0% when fine-tuned and 12.9% when trained from scratch.",
+    "evidence": "If trained from scratch, we observe a large performance decrease of -12.9%. Interestingly, fine-tuning our pretrained LM also leads to a drop in performance of -8.0%. This indicates an instance of 'catastrophic forgetting'.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 8
+  },
+  {
+    "id": "flam_009",
+    "type": "Performance",
+    "question": "On how many tasks did Flamingo-80B with 32 shots outperform state-of-the-art fine-tuned models without any fine-tuning?",
+    "answer": "On 6 of the 16 evaluated benchmarks.",
+    "evidence": "Of the 16 tasks we consider, Flamingo also surpasses the fine-tuned state of the art on 6 tasks, despite using orders of magnitude less task-specific training data.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 3
+  },
+  {
+    "id": "flam_010",
+    "type": "Procedure",
+    "question": "How does Flamingo construct zero-shot prompts for generative vision-to-text tasks?",
+    "answer": "By providing two text-only examples from the downstream task without their corresponding visual inputs to demonstrate the expected format.",
+    "evidence": "To report zero-shot performance in our work, we instead build a prompt with two examples from the downstream tasks where we remove their corresponding images or videos.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 26
+  },
+  {
+    "id": "flam_011",
+    "type": "Procedure",
+    "question": "What is RICES, and how does it order support examples in the prompt?",
+    "answer": "Retrieval-based In-Context Example Selection retrieves visually similar examples using the vision encoder and orders them by increasing similarity so the most similar appears closest to the query.",
+    "evidence": "In particular, we follow the Retrieval-based In-Context Example Selection (RICES) approach... Since LMs are sensitive to the ordering in the prompt due to recency bias, we order the examples by increasing order of similarity, such that the most similar support example appears right before the query.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 26
+  },
+  {
+    "id": "flam_012",
+    "type": "Reason/Why",
+    "question": "Why does Flamingo underperform contrastive models on standard image classification benchmarks like ImageNet?",
+    "answer": "Contrastive models directly optimize for text-image retrieval (which classification reduces to), whereas Flamingo optimizes next-token prediction autoregressively and suffers from language model priors and sample biases.",
+    "evidence": "We believe this is because the contrastive training objective directly optimizes for text-image retrieval, and in practice, the evaluation procedure for classification can be thought of as a special case of image-to-text retrieval. This is not the case for the language modeling objective we use to train our visual language models.",
+    "source": "Flamingo",
+    "source_file": "Flamingo: a Visual Language Model for Few-Shot Learning.pdf",
+    "page": 38
+  },
+  {
+    "id": "glip_001",
+    "type": "Procedure",
+    "question": "How does GLIP reformulate object detection as a phrase grounding task?",
+    "answer": "By converting candidate object categories into a descriptive text prompt and replacing the box classification logits with region-word dot product alignment scores.",
+    "evidence": "Any object detection model can be converted to a grounding model by replacing the object classification logits in its box classifier with the word-region alignment scores, i.e., dot product of the region (or box) visual features and the token (or phrase) language features.",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 2
+  },
+  {
+    "id": "glip_002",
+    "type": "Definition",
+    "question": "What is deep cross-modality fusion in GLIP, and where is it applied?",
+    "answer": "Cross-modality multi-head attention (X-MHA) applied across the last few encoding layers between DyHead visual features and BERT language features to learn language-aware visual representations.",
+    "evidence": "We introduce deep fusion between the image and language encoders, which fuses the image and text information in the last few encoding layers... The cross-modality communication is achieved by the cross-modality multi-head attention module (X-MHA).",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 4
+  },
+  {
+    "id": "glip_003",
+    "type": "Procedure",
+    "question": "How does GLIP scale up grounding data using web-crawled image-text pairs?",
+    "answer": "A pre-trained teacher GLIP detects bounding boxes on web image-text pairs where noun phrases are extracted by an NLP parser, creating pseudo-labeled grounding data to train a student model.",
+    "evidence": "Given a good grounding model (teacher), we can augment GLIP pre-training data by automatically generating grounding boxes for massive image-text-paired data, in which noun phrases are detected by an NLP parser. Thus, we can pre-train our (student) GLIP-Large model (GLIP-L) on 27M grounding data.",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 2
+  },
+  {
+    "id": "glip_004",
+    "type": "Performance",
+    "question": "What zero-shot AP did GLIP-L achieve on COCO 2017val and LVIS val without seeing any COCO images during pre-training?",
+    "answer": "49.8 AP on COCO val2017 and 26.9 AP on LVIS val.",
+    "evidence": "When directly evaluated on COCO and LVIS (without seeing any images in COCO during pre-training), GLIP achieves 49.8 AP and 26.9 AP, respectively, surpassing many supervised baselines.",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 1
+  },
+  {
+    "id": "glip_005",
+    "type": "Performance",
+    "question": "What AP did GLIP-L achieve after full fine-tuning on COCO?",
+    "answer": "60.8 AP on COCO 2017val and 61.5 AP on test-dev.",
+    "evidence": "After fine-tuned on COCO, GLIP achieves 60.8 AP on val and 61.5 AP on test-dev, surpassing prior SoTA.",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 1
+  },
+  {
+    "id": "glip_006",
+    "type": "Training",
+    "question": "What datasets comprise GoldG in GLIP's pre-training?",
+    "answer": "0.8M human-annotated gold grounding data from Flickr30K, Visual Genome Caption, and GQA (with COCO images removed).",
+    "evidence": "GoldG, 0.8M human-annotated gold grounding data curated by MDETR, including Flickr30K, VG Caption, and GQA. We have removed COCO images from the dataset.",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 6
+  },
+  {
+    "id": "glip_007",
+    "type": "Definition",
+    "question": "What is ODinW in the context of GLIP's evaluation?",
+    "answer": "Object Detection in the Wild: a benchmark of 13 public Roboflow datasets covering diverse scenarios like drone view, ego-centric images, and rare species.",
+    "evidence": "When evaluated on 13 existing object detection datasets, spanning scenarios including fine-grained species detection, drone-view detection, and ego-centric detection, the setting which we term 'Object Detection in the Wild' (ODinW)...",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 2
+  },
+  {
+    "id": "glip_008",
+    "type": "Comparison",
+    "question": "How does 1-shot GLIP-L compare to Dynamic Head on ODinW?",
+    "answer": "A 1-shot GLIP-L rivals a fully supervised Dynamic Head.",
+    "evidence": "while a 1-shot GLIP-L rivals with a fully-supervised Dynamic Head.",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 1
+  },
+  {
+    "id": "glip_009",
+    "type": "Procedure",
+    "question": "What is manual prompt tuning in GLIP, and what is an example of it?",
+    "answer": "Expanding prompt category names with visual attributes or context to inject domain knowledge; for example, changing 'stingray' to 'stingray, which is flat and round'.",
+    "evidence": "by adding the attributes to the prompt, i.e., 'flat and round', the model successfully localizes all occurrences of stringrays. With this simple prompt change, we improve the AP50 on stingray from 4.6 to 9.7.",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 9
+  },
+  {
+    "id": "glip_010",
+    "type": "Reason/Why",
+    "question": "Why is prompt tuning effective for GLIP while linear probing underperforms on ODinW?",
+    "answer": "Because GLIP's language-aware deep fusion allows prompt embeddings to guide intermediate visual feature representations, whereas linear probing only adjusts output heads on novel domains.",
+    "evidence": "Because of the language-aware deep fusion, GLIP supports a more powerful yet still efficient transfer strategy: prompt tuning... Contrary to Wang et al. who report that linear probing can deliver competitive performance for classical detection models, we find that linear probing does not work well compared to full tuning... transfer datasets (ODinW) in our case contain a lot of novel tasks and domains.",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 9
+  },
+  {
+    "id": "glip_011",
+    "type": "Procedure",
+    "question": "How does GLIP handle vocabulary prompts that exceed the 256-token limit of BERT during pre-training?",
+    "answer": "It keeps all positive classes present in the image and randomly down-samples negative categories on the fly.",
+    "evidence": "During pre-training, we randomly down-sample the categories and keep only the down-sampled categories in the prompt... We always keep all of C_pos. With a probability of 0.5, we sample from C_neg till we have 85 categories in the prompt...",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 15
+  },
+  {
+    "id": "glip_012",
+    "type": "Comparison",
+    "question": "What did the ablation comparing 2.66M detection data (FourODs) against 0.8M GoldG data show regarding rare category AP (APr) on LVIS?",
+    "answer": "FourODs achieved only 15.0 APr, whereas 0365 + GoldG achieved 17.7 APr (and 20.8 with Cap4M), demonstrating that grounding data is richer in semantics than scaling human-annotated detection data.",
+    "evidence": "However, it still trails behind Row 6 on COCO and AP_r of LVIS, where Row 6 is trained with only 0.66M detection data and 0.8M gold grounding data. Adding image-text data further widens the gap on LVIS AP_r (20.8 versus 15.0).",
+    "source": "GLIP",
+    "source_file": "Grounded Language-Image Pre-training.pdf",
+    "page": 8
+  },
+  {
+    "id": "gdino_001",
+    "type": "Architecture",
+    "question": "What base object detector does Grounding DINO build upon?",
+    "answer": "DINO (DETR with improved denoising anchor boxes).",
+    "evidence": "Grounding DINO is built upon the DETR-like model DINO, which is an end-to-end Transformer-based detector.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 4
+  },
+  {
+    "id": "gdino_002",
+    "type": "Architecture",
+    "question": "What are the three stages where Grounding DINO performs modality fusion?",
+    "answer": "Phase A: Neck (Feature Enhancer), Phase B: Query Initialization (Language-Guided Query Selection), and Phase C: Head (Cross-Modality Decoder).",
+    "evidence": "Feature fusion can be performed in three phases: neck (phase A), query initialization (phase B), and head (phase C)... which includes a feature enhancer, a language-guided query selection, and a cross-modality decoder for modalities fusion.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 1
+  },
+  {
+    "id": "gdino_003",
+    "type": "Procedure",
+    "question": "How does Grounding DINO's Language-Guided Query Selection select queries for the decoder?",
+    "answer": "It computes image-text feature similarities via matrix multiplication and selects the top Nq image tokens using Top_Nq(Max^(-1)(X_I * X_T^T)).",
+    "evidence": "The top N_q query indices for the image feature, denoted as I_{N_q}, are selected using the following expression: I_{N_q} = Top_{N_q}(Max^{(-1)}(X_I X_T^T)).",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 7
+  },
+  {
+    "id": "gdino_004",
+    "type": "Definition",
+    "question": "What is 'sub-sentence level text feature representation' in Grounding DINO?",
+    "answer": "An attention masking strategy that blocks cross-attention between unrelated category names in the prompt while preserving per-word token features for fine-grained grounding.",
+    "evidence": "To avoid unwanted word interactions, we introduce attention masks to block attentions among unrelated category names, named 'sub-sentence' level representation. It eliminates the influence between different category names while keeping per-word features for fine-grained understanding.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 8
+  },
+  {
+    "id": "gdino_005",
+    "type": "Performance",
+    "question": "What zero-shot AP did Grounding DINO L achieve on the COCO detection benchmark without using COCO training data?",
+    "answer": "52.5 AP on COCO 2017val.",
+    "evidence": "Grounding DINO achieves a 52.5 AP on the COCO zero-shot detection benchmark.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 2
+  },
+  {
+    "id": "gdino_006",
+    "type": "Performance",
+    "question": "What zero-shot mean AP did Grounding DINO L achieve on the ODinW benchmark?",
+    "answer": "26.1 mean AP.",
+    "evidence": "It sets a new record on the ODinW zero-shot benchmark with a mean 26.1 AP.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 2
+  },
+  {
+    "id": "gdino_007",
+    "type": "Numbers",
+    "question": "How many queries and feature enhancer layers does Grounding DINO use by default?",
+    "answer": "900 queries and 6 feature enhancer layers.",
+    "evidence": "In alignment with the DINO method, we set N_q to be 900... We use six feature enhancer layers in the feature enhancer module.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 7
+  },
+  {
+    "id": "gdino_008",
+    "type": "Procedure",
+    "question": "How is Referring Expression Comprehension (REC) evaluated in Grounding DINO?",
+    "answer": "The text expression is fed as the text prompt, and the detected bounding box with the highest score is taken as the predicted output.",
+    "evidence": "REC requires a bounding box for each text input. We use the output object with the largest scores as the output for the REC task.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 6
+  },
+  {
+    "id": "gdino_009",
+    "type": "Reason/Why",
+    "question": "Why do Grounding DINO and GLIP achieve poor zero-shot performance on REC benchmarks without RefC data?",
+    "answer": "Because grounded object detection models are trained to predict multiple boxes per category, whereas RefCOCO expressions map to exactly one unique target box.",
+    "evidence": "As shown in Fig. 8, each RefCOCO text prompt corresponds to only one box, while our model tends to predict multiple objects.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 25
+  },
+  {
+    "id": "gdino_010",
+    "type": "Procedure",
+    "question": "Can a pre-trained DINO detector be converted into Grounding DINO without training from scratch?",
+    "answer": "Yes, by freezing the pre-existing DINO modules and training only the text encoder and cross-modality fusion blocks.",
+    "evidence": "We freeze the modules co-existing in DINO and Grounding DINO and fine-tune the other parameters only... It shows that we can achieve similar performances with Grounding DINO-Training only text and fusion blocks using a pre-trained DINO.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 21
+  },
+  {
+    "id": "gdino_011",
+    "type": "Procedure",
+    "question": "How is Grounding DINO integrated with Stable Diffusion or GLIGEN for image editing?",
+    "answer": "Grounding DINO detects target objects to produce bounding boxes/masks, which are fed with generation prompts to Stable Diffusion for inpainting or GLIGEN for positioned grounded generation.",
+    "evidence": "First, we detect objects with Grounding DINO and generate masks by masking out the detected objects or backgrounds. After that, we feed original images, image masks, and generation prompts to an inpainting model (typical Stable Diffusion) to render new images.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 26
+  },
+  {
+    "id": "gdino_012",
+    "type": "Comparison",
+    "question": "How does Grounding DINO T compare to GLIP-T in terms of parameters and throughput (FPS)?",
+    "answer": "Grounding DINO T has 172M parameters and runs at 8.37 FPS, compared to GLIP-T's 232M parameters and 6.11 FPS.",
+    "evidence": "Table 20 shows GLIP-T has 232M params and 6.11 FPS, while Grounding DINO T has 172M params and 8.37 FPS.",
+    "source": "Grounding DINO",
+    "source_file": "Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection.pdf",
+    "page": 26
+  },
+  {
+    "id": "gcount_001",
+    "type": "Reason/Why",
+    "question": "Why do state-of-the-art reasoning VLMs still exhibit counting hallucinations according to GroundCount?",
+    "answer": "Due to fundamental spatial-semantic integration limitations and ViTs processing images via global patch attention rather than local receptive fields needed for instance discrimination.",
+    "evidence": "One major hypothesis attributes this to vision transformers (ViTs) having difficulties noticing fine-grained image details, as ViTs process images through global patch attention rather than the local receptive fields that facilitate spatial instance discrimination.",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 2
+  },
+  {
+    "id": "gcount_002",
+    "type": "Definition",
+    "question": "What is GroundCount A?",
+    "answer": "A prompt-based augmentation strategy where an ODM runs inference on the image and outputs structured textual descriptions of detections appended to the user prompt.",
+    "evidence": "The most straightforward approach augments VLM prompts with structured textual descriptions of ODM detections. As illustrated in Figure 2, we first pass the input image through YOLOv13x to obtain bounding boxes, class labels, and confidence scores, which are then converted into natural language prompts.",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 4
+  },
+  {
+    "id": "gcount_003",
+    "type": "Procedure",
+    "question": "How does GroundCount A encode spatial locations into text?",
+    "answer": "It discretizes the image into a 3x3 grid (upper/middle/lower x left/center/right) based on bounding box center coordinates.",
+    "evidence": "We discretize image space into a 3x3 grid (upper/middle/lower x left/center/right) and assign each detection to a grid cell based on its bounding box center coordinates.",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 4
+  },
+  {
+    "id": "gcount_004",
+    "type": "Procedure",
+    "question": "In what order are detected objects sequenced in the GroundCount A prompt?",
+    "answer": "First by horizontal position (left-to-right), then by vertical position (lower-to-upper).",
+    "evidence": "Detections are ordered by (1) horizontal position (left-to-right), then (2) vertical position (lower-to-upper).",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 5
+  },
+  {
+    "id": "gcount_005",
+    "type": "Definition",
+    "question": "What is the exact string template format used for each detected object in GroundCount A?",
+    "answer": "'[class] [index] [position]: [confidence]'.",
+    "evidence": "For each detection, we generate a string in the format: '[class] [index] [position]: [confidence]', where the index distinguishes multiple instances of the same class.",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 5
+  },
+  {
+    "id": "gcount_006",
+    "type": "Performance",
+    "question": "What counting accuracy improvement and latency reduction did GroundCount A achieve on Ovis2.5-2B?",
+    "answer": "It improved counting accuracy by 6.6 percentage points (from 74.7% to 81.3%) and reduced inference time by 22% (from 10.0s to 7.8s).",
+    "evidence": "In the best case, our prompt-based augmentation strategy achieves 81.3% counting accuracy on the best-performing model (Ovis2.5-2B) a 6.6pp improvement while reducing inference time by 22% through elimination of hallucination-driven reasoning loops...",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 1
+  },
+  {
+    "id": "gcount_007",
+    "type": "Reason/Why",
+    "question": "Why does prompt augmentation reduce total VLM inference time for stronger models?",
+    "answer": "By eliminating hallucination-driven reasoning loops and redundant chain-of-thought tokens during autoregressive generation.",
+    "evidence": "This counterintuitive result stems from VLMs generating fewer tokens when provided with explicit grounding information... The negligible computational overhead of YOLOv13x inference (~0.1s) is more than offset by reduced VLM generation...",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 5
+  },
+  {
+    "id": "gcount_008",
+    "type": "Comparison",
+    "question": "How did GroundCount A (prompt augmentation) compare to GroundCount B (feature-level fusion)?",
+    "answer": "Explicit prompt augmentation (81.3%) outperformed feature-level fusion (78.0% best), showing that explicit symbolic grounding outperforms implicit cross-modal feature alignment.",
+    "evidence": "These findings reveal a critical insight: for counting tasks, explicit symbolic grounding via prompts outperforms implicit feature-level fusion.",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 6
+  },
+  {
+    "id": "gcount_009",
+    "type": "Procedure",
+    "question": "What were the ablation findings regarding including detection confidence scores in prompts?",
+    "answer": "Confidence scores introduced noise; removing them improved performance by 0.1 to 4.8 percentage points in four of five evaluated VLMs.",
+    "evidence": "Confidence scores, by contrast, introduce noise for most architectures and their removal improves performance in four of five evaluated models.",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 1
+  },
+  {
+    "id": "gcount_010",
+    "type": "Comparison",
+    "question": "How did removing positional encoding impact stronger versus weaker VLM models?",
+    "answer": "It degraded stronger models (Molmo2-4B, Ovis2.5-2B) but improved weaker models (R-4B, Qwen3-VL-2B, InternVL3.5-1B) which struggled to interpret spatial encodings.",
+    "evidence": "Removing positional encoding (NoPosition) causes degradation in the two strongest baseline models: Molmo2-4B (1.8pp loss) and Ovis2.5-2B (0.6pp loss). However, the three weaker models... paradoxically improve by 0.7 to 4.4pp without positional information...",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 6
+  },
+  {
+    "id": "gcount_011",
+    "type": "Procedure",
+    "question": "What happens when the ODM detection confidence threshold is lowered from 0.5 to 0.3?",
+    "answer": "Performance degrades uniformly across all models (by 1.3 to 16.9 pp) and latency increases sharply due to processing false-positive detections, showing precision outweighs recall.",
+    "evidence": "Lowering the confidence threshold from 0.5 to 0.3 (Low Threshold) uniformly harms performance across all models, with accuracy decreasing by 1.3 to 16.9pp relative to the Full ODM augmentation, and inference time increasing by 4.1 to 55.0s...",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 7
+  },
+  {
+    "id": "gcount_012",
+    "type": "Reason/Why",
+    "question": "Why did InternVL3.5-1B degrade under full ODM prompt augmentation?",
+    "answer": "Its iterative reflection mechanisms were incompatible with and disrupted by the structured prompt context.",
+    "evidence": "This reveals that InternVL3.5's architecture appears incompatible with explicit textual grounding, potentially due to its iterative reflection mechanisms being disrupted by structured prompts.",
+    "source": "GroundCount",
+    "source_file": "Grounding Vision-Language Models with Object Detection for Mitigating Counting Hallucinations.pdf",
+    "page": 7
+  },
+  {
+    "id": "kos_001",
+    "type": "Definition",
+    "question": "What two capabilities does KOSMOS-2 introduce compared to KOSMOS-1?",
+    "answer": "Multimodal grounding (e.g., phrase grounding, referring expression comprehension) and multimodal referring (e.g., referring expression generation).",
+    "evidence": "We evaluate KOSMOS-2 on a wide range of tasks, including (i) multimodal grounding, such as referring expression comprehension, and phrase grounding, (ii) multimodal referring, such as referring expression generation...",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 1
+  },
+  {
+    "id": "kos_002",
+    "type": "Architecture",
+    "question": "How does KOSMOS-2 represent referring expressions and bounding boxes in multimodal text?",
+    "answer": "As Markdown-style hyperlinks using boundary tokens: '<p> text span </p><box><loc_1><loc_2></box>'.",
+    "evidence": "Specifically, we represent refer expressions as links in Markdown, i.e., '[text span] (bounding boxes)', where object descriptions are sequences of location tokens.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 1
+  },
+  {
+    "id": "kos_003",
+    "type": "Numbers",
+    "question": "How are continuous 2D coordinates discretized into discrete location tokens in KOSMOS-2?",
+    "answer": "The image is evenly divided into 32x32 bins, creating 1,024 discrete location tokens (<loc_0> to <loc_1023>) added to the vocabulary.",
+    "evidence": "We divide the width and height of the image into 32 bins, with each bin consisting of 7x7 pixels. A total of 32x32 location tokens are added to the vocabulary.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 6
+  },
+  {
+    "id": "kos_004",
+    "type": "Numbers",
+    "question": "What are the dataset statistics of GRIT constructed for KOSMOS-2?",
+    "answer": "Approximately 91M images, 115M text spans, and 137M associated bounding boxes.",
+    "evidence": "In the end, we obtain approximately 91M images, 115M text spans, and 137M associated bounding boxes.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 4
+  },
+  {
+    "id": "kos_005",
+    "type": "Procedure",
+    "question": "What are the two steps in the GRIT data construction pipeline?",
+    "answer": "Step 1: generating noun-chunk-bounding-box pairs using spaCy and GLIP; Step 2: expanding noun chunks into referring-expression-bounding-box pairs via dependency trees.",
+    "evidence": "The pipeline mainly consists of two steps: generating noun-chunk-bounding-box pairs and producing referring-expression-bounding-box pairs.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 3
+  },
+  {
+    "id": "kos_006",
+    "type": "Procedure",
+    "question": "What filtering is applied in Step 1 of GRIT data creation?",
+    "answer": "Abstract nouns (e.g., 'time', 'love') are removed, NMS is applied, and pairs with grounding confidence below 0.65 are discarded.",
+    "evidence": "We eliminate certain abstract noun phrases that are challenging to recognize in the image, such as 'time', 'love', and 'freedom'... Non-maximum suppression algorithm is applied... We keep noun-chunk-bounding-box pairs with predicted confidence scores higher than 0.65.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 3
+  },
+  {
+    "id": "kos_007",
+    "type": "Definition",
+    "question": "What special token prompts KOSMOS-2 to ground its generated text output to the image?",
+    "answer": "The '<grounding>' token.",
+    "evidence": "In order to tell the model when to ground text output to the visual world, we prepend the '<grounding>' token to the grounded caption during training.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 6
+  },
+  {
+    "id": "kos_008",
+    "type": "Architecture",
+    "question": "What model architecture and parameter count are used for KOSMOS-2?",
+    "answer": "A 24-layer MAGNETO Transformer causal language model with a 24-layer vision encoder, totaling approximately 1.6B trainable parameters.",
+    "evidence": "The multimodal large language model component is a 24-layer MAGNETO Transformer... The total number of trainable parameters amounts to approximately 1.6B.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 6
+  },
+  {
+    "id": "kos_009",
+    "type": "Performance",
+    "question": "What zero-shot Recall@1 did KOSMOS-2 achieve on Flickr30k Entities validation and test splits?",
+    "answer": "77.8% on the validation split and 78.7% on the test split.",
+    "evidence": "Table 2: Flickr30k Entities R@1 is 77.8 on Val Split and 78.7 on Test Split for KOSMOS-2 zero-shot.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 8
+  },
+  {
+    "id": "kos_010",
+    "type": "Comparison",
+    "question": "How did zero-shot KOSMOS-2 compare to the fine-tuned SLR baseline on RefCOCOg referring expression generation?",
+    "answer": "Zero-shot KOSMOS-2 scored 60.3 CIDEr, outperforming fine-tuned SLR (59.2 CIDEr) by 1.1 points.",
+    "evidence": "Our model obtains impressive zero-shot performance on referring expression generation, and even outperforms finetuned SLR by 1.1 CIDEr scores.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 9
+  },
+  {
+    "id": "kos_011",
+    "type": "Procedure",
+    "question": "What prompt template is used to evaluate referring expression generation in KOSMOS-2?",
+    "answer": "'<p> It </p><box><loc_1><loc_2></box> is'.",
+    "evidence": "Benefiting from the unified input format, we use '<p>It</p><box><loc_1><loc_2></box>is' as prompt to encourage the model to predict its text description.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 9
+  },
+  {
+    "id": "kos_012",
+    "type": "Reason/Why",
+    "question": "Why does KOSMOS-2 perform better on RefCOCOg than on RefCOCO and RefCOCO+?",
+    "answer": "RefCOCO and RefCOCO+ use short, game-based expressions (e.g., 'left bottom'), whereas RefCOCOg contains longer, descriptive expressions closer to GRIT's web distribution.",
+    "evidence": "This discrepancy can be attributed to the data distribution present in RefCOCO and RefCOCO+, where they tend to use a shorter referring expression (e.g., 'left bottom') during the two-player game.",
+    "source": "KOSMOS-2",
+    "source_file": "KOSMOS-2: Grounding Multimodal Large Language Models to the World.pdf",
+    "page": 8
+  },
+  {
+    "id": "clip_001",
+    "type": "Training",
+    "question": "What is CLIP's core pre-training objective?",
+    "answer": "Predicting correct (image, text) pairings in a batch of N pairs via a symmetric cross-entropy loss over normalized cosine similarities (InfoNCE / multi-class N-pair loss).",
+    "evidence": "Given a batch of N (image, text) pairs, CLIP is trained to predict which of the N x N possible (image, text) pairings across a batch actually occurred... We optimize a symmetric cross entropy loss over these similarity scores.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 4
+  },
+  {
+    "id": "clip_002",
+    "type": "Numbers",
+    "question": "What is the name and scale of the pre-training dataset created for CLIP?",
+    "answer": "WebImageText (WIT), containing 400 million (image, text) pairs.",
+    "evidence": "To address this, we constructed a new dataset of 400 million (image, text) pairs collected from a variety of publicly available sources on the Internet... We refer to this dataset as WIT for WebImageText.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 3
+  },
+  {
+    "id": "clip_003",
+    "type": "Reason/Why",
+    "question": "Why did CLIP adopt a contrastive objective instead of predictive language modeling over captions?",
+    "answer": "The contrastive objective was 4x more compute-efficient than bag-of-words prediction and 12x more efficient than an autoregressive transformer language model at zero-shot transfer.",
+    "evidence": "Starting with the same bag-of-words encoding baseline, we swapped the predictive objective for a contrastive objective in Figure 2 and observed a further 4x efficiency improvement in the rate of zero-shot transfer to ImageNet.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 4
+  },
+  {
+    "id": "clip_004",
+    "type": "Procedure",
+    "question": "How does CLIP synthesize a zero-shot linear classifier at test time?",
+    "answer": "The text encoder embeds class names or prompt templates into L2-normalized feature vectors that serve as the weights of a multinomial logistic regression classifier.",
+    "evidence": "For zero-shot classification, we reuse this capability... the text encoder is a hypernetwork which generates the weights of a linear classifier based on the text specifying the visual concepts that the classes represent.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 6
+  },
+  {
+    "id": "clip_005",
+    "type": "Performance",
+    "question": "What zero-shot Top-1 accuracy did CLIP ViT-L/14@336px achieve on ImageNet?",
+    "answer": "76.2% Top-1 accuracy, matching a fully supervised standard ResNet-50.",
+    "evidence": "The best CLIP model improves accuracy on ImageNet from a proof of concept 11.5% to 76.2% and matches the performance of the original ResNet-50 despite using none of the 1.28 million crowd-labeled training examples available for this dataset.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 6
+  },
+  {
+    "id": "clip_006",
+    "type": "Procedure",
+    "question": "How much does prompt engineering and ensembling improve zero-shot accuracy across 36 datasets?",
+    "answer": "By almost 5 percentage points on average compared to contextless class names.",
+    "evidence": "Compared to the baseline of using contextless class names, prompt engineering and ensembling boost zero-shot classification performance by almost 5 points on average across 36 datasets.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 7
+  },
+  {
+    "id": "clip_007",
+    "type": "Definition",
+    "question": "What is the difference between effective robustness and relative robustness as defined in CLIP?",
+    "answer": "Effective robustness measures out-of-distribution accuracy gains above what is predicted by in-distribution accuracy; relative robustness captures any out-of-distribution gain.",
+    "evidence": "Effective robustness measures improvements in accuracy under distribution shift above what is predicted by the documented relationship between in-distribution and out-of-distribution accuracy. Relative robustness captures any improvement in out-of-distribution accuracy.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 13
+  },
+  {
+    "id": "clip_008",
+    "type": "Performance",
+    "question": "By how much does zero-shot CLIP reduce the robustness gap on natural distribution shifts compared to standard ImageNet models?",
+    "answer": "By up to 75%.",
+    "evidence": "All zero-shot CLIP models improve effective robustness by a large amount and reduce the size of the gap between ImageNet accuracy and accuracy under distribution shift by up to 75%.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 14
+  },
+  {
+    "id": "clip_009",
+    "type": "Reason/Why",
+    "question": "What happens to CLIP's effective robustness when fine-tuned on the ImageNet training set?",
+    "answer": "ImageNet accuracy increases by 9.2%, but average accuracy under distribution shift slightly decreases, eliminating the effective robustness gain.",
+    "evidence": "Although adapting CLIP to the ImageNet distribution increases its ImageNet accuracy by 9.2% to 85.4% overall... average accuracy under distribution shift slightly decreases... While zero-shot CLIP improves effective robustness, Figure 14 shows that the benefit is almost entirely gone in a fully supervised setting.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 14
+  },
+  {
+    "id": "clip_010",
+    "type": "Numbers",
+    "question": "What mini-batch size and temperature parameter initialization are used during CLIP training?",
+    "answer": "A mini-batch size of 32,768, with temperature tau initialized to 0.07 and clipped at 100.",
+    "evidence": "The learnable temperature parameter tau was initialized to the equivalent of 0.07 from (Wu et al., 2018) and clipped to prevent scaling the logits by more than 100... We use a very large minibatch size of 32,768.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 5
+  },
+  {
+    "id": "clip_011",
+    "type": "Comparison",
+    "question": "On which tasks does zero-shot CLIP perform poorly compared to task-specific models?",
+    "answer": "Fine-grained classification (aircraft, flower species), abstract/systematic tasks like counting (CLEVRCounts), tumor detection (PatchCamelyon), and distance estimation (KITTI).",
+    "evidence": "we see that zero-shot CLIP is quite weak on several specialized, complex, or abstract tasks such as satellite image classification... lymph node tumor detection (PatchCamelyon), counting objects in synthetic scenes (CLEVRCounts)... recognizing distance to the nearest car (KITTI Distance).",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 9
+  },
+  {
+    "id": "clip_012",
+    "type": "Procedure",
+    "question": "What did CLIP's data overlap and contamination analysis find regarding test accuracy inflation?",
+    "answer": "Across 35 datasets, median overlap was 2.2% with an average of 3.2%, rarely shifting overall accuracy by more than 0.1%.",
+    "evidence": "There is a median overlap of 2.2% and an average overlap of 3.2%. Due to this small amount of overlap, overall accuracy is rarely shifted by more than 0.1% with only 7 datasets above this threshold.",
+    "source": "CLIP",
+    "source_file": "Learning Transferable Visual Models From Natural Language Supervision.pdf",
+    "page": 18
+  },
+  {
+    "id": "palme_001",
+    "type": "Definition",
+    "question": "What is the core architectural concept of PaLM-E?",
+    "answer": "Injecting continuous embodied sensor observations (images, states) into the language embedding space of a pre-trained LLM as 'multimodal sentences'.",
+    "evidence": "The main architectural idea of PaLM-E is to inject continuous, embodied observations such as images, state estimates, or other sensor modalities into the language embedding space of a pre-trained language model.",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 3
+  },
+  {
+    "id": "palme_002",
+    "type": "Numbers",
+    "question": "What are the parameter counts of the vision and language components in PaLM-E-562B?",
+    "answer": "A 22B parameter Vision Transformer (ViT-22B) and the 540B parameter PaLM language model.",
+    "evidence": "We scale PaLM-E up to 562B parameters, integrating the 540B PaLM LLM and the 22B Vision Transformer (ViT)...",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 2
+  },
+  {
+    "id": "palme_003",
+    "type": "Definition",
+    "question": "What is OSRT in PaLM-E, and what advantage did it demonstrate?",
+    "answer": "Object Scene Representation Transformer; it learns 3D-aware object-centric scene representations unsupervised via view synthesis and achieved the highest data efficiency in TAMP planning.",
+    "evidence": "Based on SRT, OSRT learns 3D-centric neural scene representations on in-domain data through a novel view synthesis task... Finally, using OSRT as the input representation leads to the best performance here, demonstrating the strengths of 3D-aware object representations.",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 4
+  },
+  {
+    "id": "palme_004",
+    "type": "Procedure",
+    "question": "How does PaLM-E resolve ambiguous object references when colors or descriptions alone are insufficient?",
+    "answer": "Via entity referrals: labeling object tokens in the input prompt (e.g., 'Object 1 is <obj_1>') so PaLM-E can reference objects with special tokens like 'obj_j'.",
+    "evidence": "For object-centric representations such as OSRT, we label the multi-modal tokens corresponding to an object in the input prompt as follows: Object 1 is <obj_1>... This enables PaLM-E to reference objects via special tokens of the form obj_j in its generated output sentences.",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 4
+  },
+  {
+    "id": "palme_005",
+    "type": "Procedure",
+    "question": "How does PaLM-E operate within a closed-loop robot control setup?",
+    "answer": "As a high-level policy that autoregressively generates text plans/subgoals conditioning low-level policies, replanning at 1 Hz based on updated visual feedback.",
+    "evidence": "PaLM-E is hence integrated into a control-loop, where its predicted decisions are executed through the low-level policies by a robot, leading to new observations based on which PaLM-E is able to replan if necessary. In this sense, PaLM-E can be understood as a high-level policy that sequences and controls the low-level policies.",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 3
+  },
+  {
+    "id": "palme_006",
+    "type": "Numbers",
+    "question": "What percentage of the full training mixture dataset in PaLM-E consists of robotics data?",
+    "answer": "Less than 10% (specifically 8.9% across three embodiments).",
+    "evidence": "The sampling frequencies are set such that only 8.9% of the full mixture is embodied data, and there are several tasks for each embodiment.",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 5
+  },
+  {
+    "id": "palme_007",
+    "type": "Definition",
+    "question": "What is 'positive transfer' in PaLM-E?",
+    "answer": "Co-training on internet-scale vision-language tasks alongside robot data yields significantly higher performance on robotic planning tasks than training on robot data alone.",
+    "evidence": "...exhibits positive transfer: the model benefits from diverse joint training across internet-scale language, vision, and visual-language domains.",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 1
+  },
+  {
+    "id": "palme_008",
+    "type": "Performance",
+    "question": "What accuracy did PaLM-E-562B achieve on the OK-VQA benchmark?",
+    "answer": "66.1%, achieving state-of-the-art performance for generalist models without task-specific fine-tuning.",
+    "evidence": "Our largest model, PaLM-E-562B with 562B parameters, in addition to being trained on robotics tasks, is a visual-language generalist with state-of-the-art performance on OK-VQA (66.1%).",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 1
+  },
+  {
+    "id": "palme_009",
+    "type": "Reason/Why",
+    "question": "How does model scale affect catastrophic forgetting of language capabilities in PaLM-E?",
+    "answer": "Larger models experience significantly less forgetting: NLG performance degrades by 87.3% for PaLM-E-12B, 61.6% for 84B, and only 3.9% for 562B relative to base PaLM.",
+    "evidence": "The notable trend is that with increasing model scale, there is considerably less catastrophic forgetting of language capabilities. As seen in Fig. 6, while for the smallest (PaLM-E-12B) model 87.3% of its NLG performance has degraded... merely 3.9% have been degraded for the largest model (PaLM-E-562B).",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 6
+  },
+  {
+    "id": "palme_010",
+    "type": "Performance",
+    "question": "What emergent capability was observed in PaLM-E-562B regarding multiple images?",
+    "answer": "Zero-shot multi-image reasoning and question answering, despite only being trained on single-image examples.",
+    "evidence": "PaLM-E also generalizes, zero-shot, to multi-image prompts despite only being trained on single-image prompts.",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 2
+  },
+  {
+    "id": "palme_011",
+    "type": "Procedure",
+    "question": "What three robot manipulation domains are evaluated in PaLM-E?",
+    "answer": "A simulated Task and Motion Planning (TAMP) environment, a tabletop manipulation environment (Language-Table), and a mobile manipulator in a real kitchen.",
+    "evidence": "Our three robot environments (Fig. 1) include a Task and Motion Planning (TAMP) domain where a robot has to manipulate (grasp and stack) objects, a table-top pushing environment, and a mobile manipulation domain.",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 5
+  },
+  {
+    "id": "palme_012",
+    "type": "Performance",
+    "question": "What F1 scores did PaLM-E-12B achieve on affordance prediction and failure detection in mobile manipulation?",
+    "answer": "0.91 F1 on affordance prediction and 0.91 F1 on failure detection.",
+    "evidence": "Table 4: Mobile manipulation environment failure detection is 0.91 F1 and affordance prediction is 0.91 F1 for PaLM-E-12B trained on the full mixture.",
+    "source": "PaLM-E",
+    "source_file": "PaLM-E: An Embodied Multimodal Language Model.pdf",
+    "page": 6
+  },
+  {
+    "id": "rt2_001",
+    "type": "Definition",
+    "question": "What is a Vision-Language-Action (VLA) model in RT-2?",
+    "answer": "A model fine-tuned from a pre-trained vision-language model to directly output low-level robot actions expressed as text tokens.",
+    "evidence": "We refer to such category of models as vision-language-action models (VLA) and instantiate an example of such a model, which we call RT-2... we propose to co-fine-tune state-of-the-art vision-language models on both robotic trajectory data and Internet-scale vision-language tasks.",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 1
+  },
+  {
+    "id": "rt2_002",
+    "type": "Architecture",
+    "question": "What robot action space is used in RT-2, and how is it discretized?",
+    "answer": "An 8-dimensional action space (3D displacement, 3D rotation, gripper extension, termination flag), with continuous dimensions discretized into 256 uniform bins.",
+    "evidence": "The action space consists of 6-DoF positional and rotational displacement of the robot end-effector, as well as the level of extension of the robot gripper and a special discrete command for terminating the episode... The continuous dimensions are discretized into 256 bins uniformly.",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 5
+  },
+  {
+    "id": "rt2_003",
+    "type": "Procedure",
+    "question": "How are action tokens mapped in RT-2-PaLI-X versus RT-2-PaLM-E?",
+    "answer": "RT-2-PaLI-X uses integer tokens up to 1000; RT-2-PaLM-E overwrites the 256 least frequently used text tokens with action tokens.",
+    "evidence": "For PaLI-X, integers up to 1000 each have a unique token, so we simply associate the action bins to the token representing the corresponding integer. For the PaLM-E model... we simply overwrite the 256 least frequently used tokens to represent the action vocabulary.",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 6
+  },
+  {
+    "id": "rt2_004",
+    "type": "Definition",
+    "question": "What is 'co-fine-tuning' in RT-2, and why is it important?",
+    "answer": "Jointly fine-tuning on both robot trajectory data and original web vision-language data, which prevents forgetting and enables generalization to novel concepts.",
+    "evidence": "A key technical detail of the training recipe that improves robot performance is co-fine-tuning robotics data with the original web data instead of naïve finetuning on robot data only... co-fine-tuning leads to more generalizable policies since the policies are exposed to both abstract visual concepts from web scale data and low level robot actions...",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 6
+  },
+  {
+    "id": "rt2_005",
+    "type": "Procedure",
+    "question": "How does RT-2 achieve real-time inference on a physical robot with a 55B parameter model?",
+    "answer": "By deploying the model on a multi-TPU cloud service and querying actions over the network at 1-3 Hz (or ~5 Hz for the 5B variant).",
+    "evidence": "We develop a protocol that allows us to run RT-2 models on robots by deploying them in a multi-TPU cloud service and querying this service over the network. With this solution, we can achieve a suitable frequency of control... The largest model we evaluated, the 55B parameter RT-2-PaLI-X-55B model, can run at a frequency of 1-3 Hz.",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 6
+  },
+  {
+    "id": "rt2_006",
+    "type": "Comparison",
+    "question": "How does RT-2 compare to RT-1 on seen tasks versus unseen generalization scenarios?",
+    "answer": "Performance on seen tasks is comparable (~92% vs. 92%), but RT-2 achieves approximately 2x higher success on unseen objects, backgrounds, and environments (62% vs. 32%).",
+    "evidence": "The performance on seen tasks is similar between the RT-2 models and RT-1... The difference between the RT-2 models and the baseline is most pronounced in the various generalization experiments... resulting in ~2x improvement over the next two baselines, RT-1 and MOO.",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 8
+  },
+  {
+    "id": "rt2_007",
+    "type": "Definition",
+    "question": "What are the three categories of emergent capabilities evaluated in RT-2?",
+    "answer": "Symbol understanding, reasoning (visual, math, and multilingual), and human recognition.",
+    "evidence": "We split the emergent capabilities of RT-2 into three categories covering axes of reasoning and semantic understanding... The first we term symbol understanding... The second category we term reasoning... We refer to the last category as human recognition tasks...",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 9
+  },
+  {
+    "id": "rt2_008",
+    "type": "Reason/Why",
+    "question": "Why does RT-2-PaLM-E outperform RT-2-PaLI-X on math reasoning tasks?",
+    "answer": "Because PaLM-E's pre-training mixture includes more language/math data, whereas PaLI-X was mostly visually pre-trained.",
+    "evidence": "We attribute this interesting result to the different pre-training mixture used in PaLM-E, which results in a model that is more capable at math calculation than the mostly visually pre-trained PaLI-X.",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 9
+  },
+  {
+    "id": "rt2_009",
+    "type": "Procedure",
+    "question": "How is Chain-of-Thought (CoT) reasoning implemented in RT-2?",
+    "answer": "By training the model to predict a natural language 'Plan:' step explaining intent before outputting the discrete action tokens.",
+    "evidence": "We augment the data to include an additional 'Plan' step, which describes the purpose of the action that the robot is about to take in natural language first, which is then followed by the actual action tokens...",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 10
+  },
+  {
+    "id": "rt2_010",
+    "type": "Reason/Why",
+    "question": "What fundamental physical limitation remains in RT-2 despite web-scale pre-training?",
+    "answer": "It cannot execute new physical motions beyond the skills present in the robot training demonstrations (it only learns new ways to deploy seen skills).",
+    "evidence": "First, although we show that including web-scale pretraining via VLMs boosts generalization over semantic and visual concepts, the robot does not acquire any ability to perform new motions by virtue of including this additional experience. The model's physical skills are still limited to the distribution of skills seen in the robot data...",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 11
+  },
+  {
+    "id": "rt2_011",
+    "type": "Numbers",
+    "question": "What data sampling ratios were used for the robotics dataset during co-fine-tuning in RT-2?",
+    "answer": "About 50% for RT-2-PaLI-X and about 66% for RT-2-PaLM-E.",
+    "evidence": "RT-2-PaLI-X weights the robotics dataset such that it makes up about 50% of the training mixture for co-fine-tuning. RT-2-PaLM-E weights the robotics dataset to be about 66% of the training mixture.",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 19
+  },
+  {
+    "id": "rt2_012",
+    "type": "Procedure",
+    "question": "How does RT-2 enforce valid action output generation during robot control?",
+    "answer": "By constraining output decoding to sample only from valid action tokens when prompted with a robot-action task.",
+    "evidence": "Thus, to ensure that RT-2 outputs valid action tokens during decoding, we constrain its output vocabulary via only sampling valid action tokens when the model is prompted with a robot-action task...",
+    "source": "RT-2",
+    "source_file": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Contro.pdf",
+    "page": 6
+  },
+  {
+    "id": "twvg_001",
+    "type": "Definition",
+    "question": "What is 'visually grounded thinking'?",
+    "answer": "A visual reasoning process in which models interleave intermediate natural-language reasoning steps with explicit point or bounding box coordinates of referenced visual evidence.",
+    "evidence": "We introduce visually grounded thinking, a reasoning process in which models interleave natural-language thoughts with explicit point or box groundings of the visual evidence used at each step.",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 1
+  },
+  {
+    "id": "twvg_002",
+    "type": "Architecture",
+    "question": "What base vision-language model is used across the controlled experiments in Thinking with Visual Grounding?",
+    "answer": "Gemma3-4B-IT.",
+    "evidence": "Across two counting benchmarks and four spatial reasoning benchmarks, adding visually grounded thinking to Gemma3-4B-IT consistently improves performance over the original model and the non-grounded thinking baseline.",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 1
+  },
+  {
+    "id": "twvg_003",
+    "type": "Definition",
+    "question": "What tag formatting is used for box grounding and point grounding in the model output?",
+    "answer": "Box mode: '<obj> name phrase | [x1, y1, x2, y2] </obj>'; Point mode: '<obj> name phrase | [x, y] </obj>' in [0, 1000] coordinates.",
+    "evidence": "A single placeholder pass therefore produces two aligned SFT variants: <obj> name phrase | [x1, y1, x2, y2] </obj> for box supervision and <obj> name phrase | [x, y] </obj> for point supervision...",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 4
+  },
+  {
+    "id": "twvg_004",
+    "type": "Procedure",
+    "question": "How are visual grounding masks acquired in the data synthesis pipeline?",
+    "answer": "Using an iterative VLM agent calling SAM3 with proposed noun phrases, which verifies candidate masks against images and zoomed-in crops.",
+    "evidence": "We therefore build an automatic data synthesis pipeline around a SAM3-based grounding agent... The agent uses four tool actions. First, it calls SAM3 with a short noun phrase... Second, it verifies rendered masks using the raw image, a full-image mask overlay, and a zoomed-in crop...",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 2
+  },
+  {
+    "id": "twvg_005",
+    "type": "Procedure",
+    "question": "How does the data synthesis pipeline derive single point coordinates from SAM3 masks?",
+    "answer": "By choosing the interior point farthest from the mask boundary, ensuring it falls strictly inside the object even for non-convex shapes.",
+    "evidence": "For point mode, each RLE mask is converted to a single on-object point by choosing the interior point farthest from the mask boundary, which ensures that the point lies inside the object even for non-convex masks.",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 4
+  },
+  {
+    "id": "twvg_006",
+    "type": "Definition",
+    "question": "What is the function of the 'grounding object router' during RL training?",
+    "answer": "A lightweight VLM (Qwen3.5-4B) that matches model-generated <obj> tags in rollouts to ground-truth objects using name and surrounding context before scoring grounding quality.",
+    "evidence": "The grounding object router is a lightweight VLM, Qwen3.5-4B... This routing step matches model-generated grounding objects to the saved ground-truth grounding objects before scoring grounding quality.",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 5
+  },
+  {
+    "id": "twvg_007",
+    "type": "Procedure",
+    "question": "How is box grounding quality calculated in the reward function?",
+    "answer": "By computing the Intersection-over-Union (IoU) between the union of generated boxes and the union of ground-truth boxes for each matched object, averaged over all ground-truth targets.",
+    "evidence": "Specifically, we treat each set of boxes as a union of regions and compute their intersection-over-union (IoU)... The final box grounding quality is the mean score over all T ground-truth objects.",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 5
+  },
+  {
+    "id": "twvg_008",
+    "type": "Procedure",
+    "question": "How is point grounding quality calculated in the reward function?",
+    "answer": "By computing the per-object F1 score based on a one-to-one assignment between generated points and valid ground-truth masks.",
+    "evidence": "We form a one-to-one assignment between generated points and ground-truth masks, where a point can be assigned to a mask only if it lies inside that mask... We use the per-object F1 score to measure point grounding quality...",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 6
+  },
+  {
+    "id": "twvg_009",
+    "type": "Reason/Why",
+    "question": "Why are unmatched grounding objects in the model rollout not penalized in the reward?",
+    "answer": "Because the model may identify and ground additional valid visual evidence during thinking that was not included in the synthesized ground-truth list.",
+    "evidence": "During thinking, the model may identify additional visual evidence that is useful for solving the question and is also reasonable to ground. Therefore, unmatched rollout grounding objects neither increase nor decrease the grounding quality.",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 6
+  },
+  {
+    "id": "twvg_010",
+    "type": "Procedure",
+    "question": "What reinforcement learning algorithm is used to train visually grounded thinking?",
+    "answer": "GRPO (Group Relative Policy Optimization).",
+    "evidence": "We use R_i for advantage estimation in GRPO (Shao et al., 2024b).",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 6
+  },
+  {
+    "id": "twvg_011",
+    "type": "Reason/Why",
+    "question": "What failure mode did the non-grounded thinking baseline encounter during RL?",
+    "answer": "Length collapse, where the generated reasoning trace length decreased roughly linearly over training, reducing exploration.",
+    "evidence": "We observe that the non-grounded thinking model suffers from length collapse during RL: its response length decreases roughly linearly over training, which reduces exploration and leads to poor final performance.",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 7
+  },
+  {
+    "id": "twvg_012",
+    "type": "Comparison",
+    "question": "Which grounding interface (points vs. boxes) performs better on counting benchmarks, and why?",
+    "answer": "Point grounding performs better, because counting requires instance-level localization rather than full geometric extent, which points provide compactly without boundary errors.",
+    "evidence": "On counting benchmarks, point-mode grounded thinking consistently outperforms box-mode grounded thinking. This suggests that counting mainly requires instance-level localization... Point grounding is well matched to this requirement because it provides a compact grounding to each instance while avoiding the harder problem of generating a tight bounding box.",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 8
+  },
+  {
+    "id": "twvg_013",
+    "type": "Comparison",
+    "question": "How do the 4B visually grounded thinking models compare to Gemma3-27B-IT on spatial reasoning benchmarks?",
+    "answer": "They achieve comparable performance overall, and on SpatialMQA (38.68% vs 38.99%) and MultihopSpatial (37.68% vs 30.94%) the 4B models surpass Gemma3-27B-IT.",
+    "evidence": "On spatial reasoning, the visually grounded thinking 4B models match, and in some cases surpass, Gemma3-27B-IT from the same model family... on SpatialMQA and MultihopSpatial, the best visually grounded thinking models even outperform Gemma3-27B-IT.",
+    "source": "Thinking with Visual Grounding",
+    "source_file": "Thinking with Visual Grounding.pdf",
+    "page": 1
+  }
+]
