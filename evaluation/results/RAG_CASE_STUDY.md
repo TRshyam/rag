@@ -10,6 +10,7 @@
 - **Retrieval Strategy:** Top-$k=5$ similarity search
 - **Generator LLM:** `Qwen3.5:4B` via Ollama (`num_ctx`: 8192, `reasoning`: false, `num_predict`: 1024)
 - **Evaluation Dataset:** 122 curated golden question-answer pairs with page evidence
+- **Architecture Flow Diagrams:** [`evaluation/results/RUN_FLOW_DIAGRAMS.md`](file:///home/shyam/rag/evaluation/results/RUN_FLOW_DIAGRAMS.md)
 
 ---
 

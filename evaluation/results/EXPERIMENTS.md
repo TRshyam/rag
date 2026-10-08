@@ -25,6 +25,7 @@ This registry tracks systematic experiments evaluating retrieval quality, chunki
 - Evaluation Results JSON: [`evaluation/results/results data/experiment_0_baseline.json`](file:///home/shyam/rag/evaluation/results/results%20data/experiment_0_baseline.json)
 - Markdown Summary: [`evaluation/results/evaluation_summary.md`](file:///home/shyam/rag/evaluation/results/evaluation_summary.md)
 - Case Study Document: [`evaluation/results/RAG_CASE_STUDY.md`](file:///home/shyam/rag/evaluation/results/RAG_CASE_STUDY.md)
+- Run Flow Diagrams: [`evaluation/results/RUN_FLOW_DIAGRAMS.md`](file:///home/shyam/rag/evaluation/results/RUN_FLOW_DIAGRAMS.md)
 - Interactive Dashboard: [`evaluation/results/report.html`](file:///home/shyam/rag/evaluation/results/report.html)
 
 ### Configuration Specification
